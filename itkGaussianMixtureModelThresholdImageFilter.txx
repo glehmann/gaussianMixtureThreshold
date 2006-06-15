@@ -1,7 +1,7 @@
 /*=========================================================================
 
   Program:   Insight Segmentation & Registration Toolkit
-  Module:    $RCSfile: itkGaussianMixtureThresholdImageFilter.txx,v $
+  Module:    $RCSfile: itkGaussianMixtureModelThresholdImageFilter.txx,v $
   Language:  C++
   Date:      $Date: 2006/03/15 01:57:09 $
   Version:   $Revision: 1.8 $
@@ -14,20 +14,20 @@
      PURPOSE.  See the above copyright notices for more information.
 
 =========================================================================*/
-#ifndef _itkGaussianMixtureThresholdImageFilter_txx
-#define _itkGaussianMixtureThresholdImageFilter_txx
+#ifndef _itkGaussianMixtureModelThresholdImageFilter_txx
+#define _itkGaussianMixtureModelThresholdImageFilter_txx
 
-#include "itkGaussianMixtureThresholdImageFilter.h"
+#include "itkGaussianMixtureModelThresholdImageFilter.h"
 #include "itkBinaryThresholdImageFilter.h"
 #include "itkProgressAccumulator.h"
 #include "itkScalarImageToHistogramGenerator.h"
-#include "itkGaussianMixtureThresholdCalculator.h"
+#include "itkGaussianMixtureModelThresholdCalculator.h"
 
 namespace itk {
 
 template<class TInputImage, class TOutputImage>
-GaussianMixtureThresholdImageFilter<TInputImage, TOutputImage>
-::GaussianMixtureThresholdImageFilter()
+GaussianMixtureModelThresholdImageFilter<TInputImage, TOutputImage>
+::GaussianMixtureModelThresholdImageFilter()
 {
   m_OutsideValue   = NumericTraits<OutputPixelType>::Zero;
   m_InsideValue    = NumericTraits<OutputPixelType>::max();
@@ -37,7 +37,7 @@ GaussianMixtureThresholdImageFilter<TInputImage, TOutputImage>
 
 template<class TInputImage, class TOutputImage>
 void
-GaussianMixtureThresholdImageFilter<TInputImage, TOutputImage>
+GaussianMixtureModelThresholdImageFilter<TInputImage, TOutputImage>
 ::GenerateData()
 {
   typename ProgressAccumulator::Pointer progress = ProgressAccumulator::New();
@@ -72,7 +72,7 @@ GaussianMixtureThresholdImageFilter<TInputImage, TOutputImage>
 
 template<class TInputImage, class TOutputImage>
 void
-GaussianMixtureThresholdImageFilter<TInputImage, TOutputImage>
+GaussianMixtureModelThresholdImageFilter<TInputImage, TOutputImage>
 ::GenerateInputRequestedRegion()
 {
   const_cast<TInputImage *>(this->GetInput())->SetRequestedRegionToLargestPossibleRegion();
@@ -80,7 +80,7 @@ GaussianMixtureThresholdImageFilter<TInputImage, TOutputImage>
 
 template<class TInputImage, class TOutputImage>
 void 
-GaussianMixtureThresholdImageFilter<TInputImage,TOutputImage>
+GaussianMixtureModelThresholdImageFilter<TInputImage,TOutputImage>
 ::PrintSelf(std::ostream& os, Indent indent) const
 {
   Superclass::PrintSelf(os,indent);

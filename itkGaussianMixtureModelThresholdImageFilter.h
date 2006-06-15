@@ -1,7 +1,7 @@
 /*=========================================================================
 
   Program:   Insight Segmentation & Registration Toolkit
-  Module:    $RCSfile: itkGaussianMixtureThresholdImageFilter.h,v $
+  Module:    $RCSfile: itkGaussianMixtureModelThresholdImageFilter.h,v $
   Language:  C++
   Date:      $Date: 2006/04/05 13:59:37 $
   Version:   $Revision: 1.3 $
@@ -14,22 +14,22 @@
      PURPOSE.  See the above copyright notices for more information.
 
 =========================================================================*/
-#ifndef __itkGaussianMixtureThresholdImageFilter_h
-#define __itkGaussianMixtureThresholdImageFilter_h
+#ifndef __itkGaussianMixtureModelThresholdImageFilter_h
+#define __itkGaussianMixtureModelThresholdImageFilter_h
 
 #include "itkImageToImageFilter.h"
 #include "itkFixedArray.h"
-#include "itkGaussianMixtureThresholdCalculator.h"
+#include "itkGaussianMixtureModelThresholdCalculator.h"
 #include "itkScalarImageToHistogramGenerator.h"
 
 namespace itk {
 
-/** \class GaussianMixtureThresholdImageFilter 
+/** \class GaussianMixtureModelThresholdImageFilter 
  * \brief Threshold an image using multiple Otsu Thresholds.
  *
  * This filter creates a labeled image that separates the input
  * image into various classes. The filter
- * computes the thresholds using the GaussianMixtureThresholdCalculator and
+ * computes the thresholds using the GaussianMixtureModelThresholdCalculator and
  * applies those thesholds to the input image using the
  * ThresholdLabelerImageFilter. The NumberOfHistogramBins and
  * NumberOfThresholds can be set
@@ -37,18 +37,18 @@ namespace itk {
  * for the ThresholdLabelerImageFilter.
  *
  * \sa ScalarImageToHistogramGenerator
- * \sa GaussianMixtureThresholdCalculator
+ * \sa GaussianMixtureModelThresholdCalculator
  * \sa ThresholdLabelerImageFilter
  * \ingroup IntensityImageFilters  Multithreaded
  */
 
 template<class TInputImage, class TOutputImage>
-class ITK_EXPORT GaussianMixtureThresholdImageFilter : 
+class ITK_EXPORT GaussianMixtureModelThresholdImageFilter : 
     public ImageToImageFilter<TInputImage, TOutputImage>
 {
 public:
   /** Standard Self typedef */
-  typedef GaussianMixtureThresholdImageFilter Self;
+  typedef GaussianMixtureModelThresholdImageFilter Self;
   typedef ImageToImageFilter<TInputImage,TOutputImage>  Superclass;
   typedef SmartPointer<Self>        Pointer;
   typedef SmartPointer<const Self>  ConstPointer;
@@ -57,7 +57,7 @@ public:
   itkNewMacro(Self);  
 
   /** Runtime information support. */
-  itkTypeMacro(GaussianMixtureThresholdImageFilter, ImageToImageFilter);
+  itkTypeMacro(GaussianMixtureModelThresholdImageFilter, ImageToImageFilter);
   
   /** Image pixel value typedef. */
   typedef typename TInputImage::PixelType   InputPixelType;
@@ -78,7 +78,7 @@ public:
   typedef itk::Statistics::ScalarImageToHistogramGenerator< 
                                            TInputImage > HistogramGeneratorType;
   typedef typename HistogramGeneratorType::HistogramType HistogramType;
-  typedef GaussianMixtureThresholdCalculator< HistogramType > CalculatorType;
+  typedef GaussianMixtureModelThresholdCalculator< HistogramType > CalculatorType;
   
   /** Image related typedefs. */
   itkStaticConstMacro(InputImageDimension, unsigned int,
@@ -117,15 +117,15 @@ public:
 #endif
 
 protected:
-  GaussianMixtureThresholdImageFilter();
-  ~GaussianMixtureThresholdImageFilter(){};
+  GaussianMixtureModelThresholdImageFilter();
+  ~GaussianMixtureModelThresholdImageFilter(){};
   void PrintSelf(std::ostream& os, Indent indent) const;
 
   void GenerateInputRequestedRegion();
   void GenerateData ();
 
 private:
-  GaussianMixtureThresholdImageFilter(const Self&); //purposely not implemented
+  GaussianMixtureModelThresholdImageFilter(const Self&); //purposely not implemented
   void operator=(const Self&); //purposely not implemented
 
   unsigned long       m_NumberOfHistogramBins;
@@ -139,7 +139,7 @@ private:
 } // end namespace itk
   
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkGaussianMixtureThresholdImageFilter.txx"
+#include "itkGaussianMixtureModelThresholdImageFilter.txx"
 #endif
 
 #endif

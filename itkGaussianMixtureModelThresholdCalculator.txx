@@ -1,7 +1,7 @@
 /*=========================================================================
 
   Program:   Insight Segmentation & Registration Toolkit
-  Module:    $RCSfile: itkGaussianMixtureThresholdCalculator.txx,v $
+  Module:    $RCSfile: itkGaussianMixtureModelThresholdCalculator.txx,v $
   Language:  C++
   Date:      $Date: 2005/01/13 15:36:46 $
   Version:   $Revision: 1.4 $
@@ -14,10 +14,10 @@
      PURPOSE.  See the above copyright notices for more information.
 
 =========================================================================*/
-#ifndef _itkGaussianMixtureThresholdCalculator_txx
-#define _itkGaussianMixtureThresholdCalculator_txx
+#ifndef _itkGaussianMixtureModelThresholdCalculator_txx
+#define _itkGaussianMixtureModelThresholdCalculator_txx
 
-#include "itkGaussianMixtureThresholdCalculator.h"
+#include "itkGaussianMixtureModelThresholdCalculator.h"
 
 namespace itk
 {
@@ -28,7 +28,7 @@ namespace itk
  */                    
 template<class TInputHistogram>
 void
-GaussianMixtureThresholdCalculator<TInputHistogram>
+GaussianMixtureModelThresholdCalculator<TInputHistogram>
 ::GenerateData()
 {
   typename TInputHistogram::ConstPointer histogram = this->GetInputHistogram();
@@ -142,7 +142,7 @@ std::cout.flush();
 
 template<class TInputHistogram>
 void
-GaussianMixtureThresholdCalculator<TInputHistogram>
+GaussianMixtureModelThresholdCalculator<TInputHistogram>
 ::PrintSelf(std::ostream& os, Indent indent) const
 {
   Superclass::PrintSelf(os,indent);

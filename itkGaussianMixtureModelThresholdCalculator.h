@@ -1,7 +1,7 @@
 /*=========================================================================
 
   Program:   Insight Segmentation & Registration Toolkit
-  Module:    $RCSfile: itkGaussianMixtureThresholdCalculator.h,v $
+  Module:    $RCSfile: itkGaussianMixtureModelThresholdCalculator.h,v $
   Language:  C++
   Date:      $Date: 2005/11/25 15:50:35 $
   Version:   $Revision: 1.4 $
@@ -14,8 +14,8 @@
      PURPOSE.  See the above copyright notices for more information.
 
 =========================================================================*/
-#ifndef __itkGaussianMixtureThresholdCalculator_h
-#define __itkGaussianMixtureThresholdCalculator_h
+#ifndef __itkGaussianMixtureModelThresholdCalculator_h
+#define __itkGaussianMixtureModelThresholdCalculator_h
 
 #include "itkHistogramAlgorithmBase.h"
 #include "itkHistogram.h"
@@ -23,7 +23,7 @@
 namespace itk
 {
 
-/** \class GaussianMixtureThresholdCalculator
+/** \class GaussianMixtureModelThresholdCalculator
  * \brief Computes Otsu's thresholds for a histogram.
  * 
  * You plug in the target histogram using SetInputHistogram method and 
@@ -37,12 +37,12 @@ namespace itk
  */
 
 template< class TInputHistogram >
-class GaussianMixtureThresholdCalculator :
+class GaussianMixtureModelThresholdCalculator :
       public HistogramAlgorithmBase< TInputHistogram >
 {
 public:
   /**Standard class typedefs. */
-  typedef GaussianMixtureThresholdCalculator Self;
+  typedef GaussianMixtureModelThresholdCalculator Self;
   typedef HistogramAlgorithmBase<TInputHistogram> Superclass;
   typedef SmartPointer<Self> Pointer;
   typedef SmartPointer<const Self> ConstPointer;
@@ -60,15 +60,15 @@ public:
   typedef std::vector<InstanceIdentifierType> InstanceIdentifierVectorType;
 
   /**Standard Macros */
-  itkTypeMacro(GaussianMixtureThresholdCalculator, HistogramAlgorithmsBase);
+  itkTypeMacro(GaussianMixtureModelThresholdCalculator, HistogramAlgorithmsBase);
   itkNewMacro(Self) ;
 
   /** Returns the threshold */
   itkGetConstMacro( Output, MeasurementType );
 
 protected:
-  GaussianMixtureThresholdCalculator() {};
-  virtual ~GaussianMixtureThresholdCalculator() {};
+  GaussianMixtureModelThresholdCalculator() {};
+  virtual ~GaussianMixtureModelThresholdCalculator() {};
   void PrintSelf(std::ostream& os, Indent indent) const;
 
   /** Calculates the thresholds and save them */
@@ -83,7 +83,7 @@ private:
 } // end of namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkGaussianMixtureThresholdCalculator.txx"
+#include "itkGaussianMixtureModelThresholdCalculator.txx"
 #endif
 
 #endif

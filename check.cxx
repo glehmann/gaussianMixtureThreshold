@@ -3,7 +3,7 @@
 #include "itkCommand.h"
 #include "itkSimpleFilterWatcher.h"
 
-#include "itkGaussianMixtureThresholdImageFilter.h"
+#include "itkGaussianMixtureModelThresholdImageFilter.h"
 
 
 int main(int, char * argv[])
@@ -17,7 +17,7 @@ int main(int, char * argv[])
   ReaderType::Pointer reader = ReaderType::New();
   reader->SetFileName( argv[1] );
 
-  typedef itk::GaussianMixtureThresholdImageFilter< IType, IType > FilterType;
+  typedef itk::GaussianMixtureModelThresholdImageFilter< IType, IType > FilterType;
   FilterType::Pointer filter = FilterType::New();
   filter->SetInput( reader->GetOutput() );
 //   filter->SetNumberOfHistogramBins( 255 );
