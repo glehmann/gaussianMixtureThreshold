@@ -20,9 +20,9 @@ int main(int, char * argv[])
   typedef itk::GaussianMixtureModelThresholdImageFilter< IType, IType > FilterType;
   FilterType::Pointer filter = FilterType::New();
   filter->SetInput( reader->GetOutput() );
-//   filter->SetNumberOfHistogramBins( 255 );
+//   filter->SetNumberOfHistogramBins( 256 );
 
-  itk::SimpleFilterWatcher watcher(filter, "filter");
+//   itk::SimpleFilterWatcher watcher(filter, "filter");
 
   typedef itk::ImageFileWriter< IType > WriterType;
   WriterType::Pointer writer = WriterType::New();
